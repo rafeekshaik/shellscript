@@ -1,12 +1,16 @@
 #!/bin/bash
 USERID=$(id -u)
+R="\e[31m"
+G="\e[32m"
+Y="\e[33m"
+N="\e[0m"
 VALIDATE(){
       if [ $1 -ne 0 ]
     then 
-    echo "$2 ....... is failure"
+    echo -e "$2 ....... is $R failure $N"
     exit 1
     else
-    echo "$2 ....... is success"
+    echo -e "$2 ....... is  $G success $N"
     fi
 }
 if [ $USERID -ne 0 ]
@@ -32,5 +36,5 @@ then
     dnf install git -y
     VALIDATE $? "INSTALLING GIT"
 else
-echo "git allready installed"
+echo -e "git allready $Y installed  $N"
 fi
