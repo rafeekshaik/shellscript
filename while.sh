@@ -52,7 +52,7 @@ dnf list installed $package
 if [ $? -ne 0 ]
 then
 dnf install $package -y
-VALIDATE $? "installing $package"
+VALIDATE $? "installing oooo $package"
 else
 echo "$package is allready installed"
 fi
