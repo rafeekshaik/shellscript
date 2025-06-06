@@ -1,6 +1,18 @@
 #!/bin/bash
 
 USERID=$(id -u)
+
+VALIDATE(){
+   if [ $1 -ne 0 ]
+    then
+    echo "$2 ....is failure"
+    exit 1
+    else
+    echo "$2.... is successfull"
+    fi
+}
+
+
 if [ $USERID -ne 0 ]
 then 
 echo "ERROR::user must have previllaged admin access"
@@ -11,13 +23,7 @@ dnf list installed mysql
     if [ $? -ne 0 ]
     then
     dnf install mysql -y
-    if [ $? -ne 0 ]
-    then
-    echo "installing mysql ....is failure"
-    exit 1
-    else
-    echo "installing mysql.... is successfull"
-    fi
+    VALIDATE $? "installing mysql"
 
 else
 echo "mysql is allready installed"
@@ -27,14 +33,7 @@ fi
         if [ $? -ne 0 ]
         then
         dnf install git -y
-        if [ $? -ne 0 ]
-        then 
-        echo "insatlling git.....if failure"
-        exit 1
-        else
-        echo "installing git .... successfull"
-        fi
+        VALIDATE $? "installing git"
     else
     echo "git allready installed"
     fi
-    
