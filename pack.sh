@@ -33,5 +33,5 @@ dnf install git -y
     echo "insatlling git .... successfully"
     fi
 else
-echo "git allrey installed"
+echo "git allready installed"
 fi
