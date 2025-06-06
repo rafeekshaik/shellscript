@@ -18,6 +18,7 @@ VALIDATE(){
     echo -e "$2 ....... is  $G success $N"
     fi
 }
+echo "script executed at :$TIMESTAMP"
 if [ $USERID -ne 0 ]
 then 
 echo "ERROR:user must have previllaged admin access"
