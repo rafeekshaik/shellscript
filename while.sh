@@ -46,4 +46,15 @@ echo -e "git allready $Y installed  $N"
 fi
 
 
+for package in $@
+do
+dnf list installed $package
+if [ $? -ne 0 ]
+then
+dnf install $package -y
+VALIDATE $? "installing $package"
+else
+echo "$package is allready installed"
+fi
 
+done 
