@@ -16,7 +16,7 @@ dnf install mysql -y
     then
     echo "instaling mysql is........ failure"
     exit 1
-    fi
+
     else
     echo "installing mysql .....success"
     fi
@@ -33,7 +33,7 @@ fi
         then
         echo "installing git is a failure"
         exit 1
-        fi
+    
         else
         echo "installing git is success"
         fi
