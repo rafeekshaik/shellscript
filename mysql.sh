@@ -38,6 +38,6 @@ mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOG_FILE_NAME
 VALIDATE $? "SETTING UP THE ROOT PASSWORD"
 else
 echo -e "MYSQL ROOT PASSWORD ALLREADY SETUP......$Y skipping"
-
+fi
 
 
