@@ -30,6 +30,14 @@ VALIDATE $? "ENABLING MYSQL SERVER"
 systemctl start mysqld &>>$LOG_FILE_NAME
 VALIDATE $? "STARTING  MYSQL SERVER"
 
+mysql -h mysql.daws17s.online -u root -pExpenseApp@1 -e 'show databases;'
 
+if [ $? -ne 0 ]
+then
 mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOG_FILE_NAME
 VALIDATE $? "SETTING UP THE ROOT PASSWORD"
+else
+echo -e "MYSQL ROOT PASSWORD ALLREADY SETUP......$Y skipping"
+
+
+
