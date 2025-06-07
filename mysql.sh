@@ -30,7 +30,7 @@ VALIDATE $? "ENABLING MYSQL SERVER"
 systemctl start mysqld &>>$LOG_FILE_NAME
 VALIDATE $? "STARTING  MYSQL SERVER"
 
-mysql -h mysql.daws17s.online -u root -pExpenseApp@1 -e 'show databases;'
+mysql -h mysql.daws17s.online -u root -pExpenseApp@1 -e 'show databases;' &>>$LOG_FILE_NAME
 
 if [ $? -ne 0 ]
 then
