@@ -27,7 +27,7 @@ while read -r file
 do
 
    echo "deleteding file:: $file"
-
+   rm -rf $file
 done <<< $FILE_TO_DELETE
 
 
