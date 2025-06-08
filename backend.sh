@@ -29,9 +29,14 @@ VALIDATE $? "enabling nodejs 20"
 dnf install nodejs -y &>>$LOG_FILE_NAME
 VALIDATE $? "installing nodejs"
 
+id expense
+if [ $? -ne 0 ]
+then
 useradd expense &>>$LOG_FILE_NAME
 VALIDATE $? "creating expenseuser"
-
+else
+echo "expense user allready created"
+fi
 mkdir /app
 
 curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip &>>$LOG_FILE_NAME
