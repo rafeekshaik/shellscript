@@ -49,7 +49,7 @@ VALIDATE $? "unzipping the code"
 npm install &>>$LOG_FILE_NAME
 echo "downloading dependencies"
 
-cp /home/ec2-user/shellscript/backend.sh /etc/systemd/system/backend.service &>>$LOG_FILE_NAME
+cp /home/ec2-user/shellscript/backend.service /etc/systemd/system/backend.service &>>$LOG_FILE_NAME
 VALIDATE $? "copying backend.service"
 
 dnf install mysql -y &>>$LOG_FILE_NAME
