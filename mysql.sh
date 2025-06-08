@@ -40,3 +40,4 @@ mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOG_FILE_NAME
 VALIDATE $? "setteing up root password succesfuly"
 else 
 echo -e "root password all ready set up ......$G skipping $Y"
+fi
