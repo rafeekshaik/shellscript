@@ -61,7 +61,7 @@ VALIDATE $? "adding schemas to the databases"
 systemctl daemon-reload &>>$LOG_FILE_NAME
 VALIDATE $? "demon relaod"
 
-systemctl start backend &>>$LOG_FILE_NAME
+systemctl restart backend &>>$LOG_FILE_NAME
 VALIDATE $? "start backend"
 
 systemctl enable backend &>>$LOG_FILE_NAME
