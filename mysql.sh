@@ -5,7 +5,7 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
-LOG_FOLDER="/var/log/expense-logs"
+LOG_FOLDER="/var/log/shellscript-logs"
 LOG_FILE=$(echo $0 | cut -d "." -f1)
 TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
 LOG_FILE_NAME="$LOG_FOLDER/$LOG_FILE-$TIMESTAMP.log"
@@ -20,20 +20,20 @@ VALIDATE(){
 }
 echo "script executed at :$TIMESTAMP" &>>$LOG_FILE_NAME
 
-dnf install mysql-server -y &>>$LOG_FILE_NAME
-VALIDATE $? "installing mysql server"
+dnf install mysql-server -y
+VALIDATE $? "INSTALLING MYSQL SERVER"
 
-systemctl enable mysqld &>>$LOG_FILE_NAME
-VALIDATE $? "enabling mysql server"
+systemctl enable mysqld
+VALIDATE $? "ENABLING MYSQL SERVER"
 
-systemctl start mysqld &>>$LOG_FILE_NAME
-VALIDATE $? "starting mysql server"
+systemctl start mysqld
+VALIDATE $? "STARTING MYSQL SERVER"
 
-mysql -h mysql.daws17s.online -uroot -pExpenseApp@1 -e 'show databases;' &>>$LOG_FILE_NAME
+mysql -h mysql.daws17s.online -uroot -pExpenseApp@1 'show databases;'
 if [ $? -ne 0 ]
-then
-mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOG_FILE_NAME
-VALIDATE $? "setting up the root password"
-else
-echo -e "root password allready setup successfully done.......$G skipping $N"
+then 
+mysql_secure_installation --set-root-pass ExpenseApp@1
+VALIDATE $? "setting up root password"
+else 
+echo -e "root password allresy setup..... $G skipping $Y"
 fi
