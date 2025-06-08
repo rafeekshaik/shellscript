@@ -55,7 +55,7 @@ VALIDATE $? "copying backend.service"
 dnf install mysql -y &>>$LOG_FILE_NAME
 VALIDATE $? "installing mysql client"
 
-mysql -h mysql.daws17s.online -uroot -pExpenseApp@1 < /app/schema/backend.sql &>>$LOG_FILE_NAME
+mysql -h mysql.daws17s.online -u root -pExpenseApp@1 < /app/schema/backend.sql &>>$LOG_FILE_NAME
 VALIDATE $? "adding schemas to the databases"
 
 systemctl daemon-reload &>>$LOG_FILE_NAME
