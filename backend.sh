@@ -56,7 +56,7 @@ VALIDATE $? "cpying the backend.service"
 dnf install mysql -y &>>$LOG_FILE_NAME
 VALIDATE $? "installing mysql client"
 
-mysql -h mysql.daws17s.onlline -uroot -pExpenseApp@1 < /app/schema/backend.sql &>>$LOG_FILE_NAME
+mysql -h mysql.daws17s.online -uroot -pExpenseApp@1 < /app/schema/backend.sql &>>$LOG_FILE_NAME
 VALIDATE $? "adding project schemas to database"
 
 systemctl daemon-reload &>>$LOG_FILE_NAME
