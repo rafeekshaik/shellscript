@@ -20,19 +20,23 @@ VALIDATE(){
 }
 echo "script executed at :$TIMESTAMP" &>>$LOG_FILE_NAME
 
-dnf install mysql-server -y
+dnf install mysql-server -y &>>$LOG_FILE_NAME
+
  VALIDATE $? "installing mysql server"
 
-systemctl enable mysqld
+systemctl enable mysqld &>>$LOG_FILE_NAME
+
 VALIDATE $? "enabling mysql server"
-systemctl start mysqld
+systemctl start mysqld &>>$LOG_FILE_NAME
+
 VALIDATE $? "START MYSQL SERVER"
 
 
-mysql -h mysql.daws17s.online -uroot -pExpenseApp@1 'show databases;'
+mysql -h mysql.daws17s.online -uroot -pExpenseApp@1 'show databases;' &>>$LOG_FILE_NAME
+
 if [ $? -ne 0 ]
 then 
-mysql_secure_installation --set-root-pass ExpenseApp@1
+mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOG_FILE_NAME
 VALIDATE $? "setteing up root password succesfuly"
 else 
 echo -e "root password all ready set up ......$G skipping $Y"
