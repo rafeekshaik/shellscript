@@ -1,5 +1,4 @@
 #!/bin/bash
-#!/bin/bash
 USERID=$(id -u)
 R="\e[31m"
 G="\e[32m"
@@ -22,22 +21,13 @@ VALIDATE(){
 echo "script executed at :$TIMESTAMP" &>>$LOG_FILE_NAME
 
 dnf install mysql-server -y &>>$LOG_FILE_NAME
-VALIDATE $? "INSTALLING MYSQL SERVER"
+VALIDATE $? "installing mysql server"
 
 systemctl enable mysqld &>>$LOG_FILE_NAME
-VALIDATE $? "ENABLING MYSQL SERVER"
+VALIDATE $? "enabling mysql server"
 
 systemctl start mysqld &>>$LOG_FILE_NAME
-VALIDATE $? "STARTING  MYSQL SERVER"
+VALIDATE $? "starting mysql server"
 
-mysql -h mysql.daws17s.online -u root -pExpenseApp@1 -e 'show databases;' &>>$LOG_FILE_NAME
-
-if [ $? -ne 0 ]
-then
 mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOG_FILE_NAME
-VALIDATE $? "SETTING UP THE ROOT PASSWORD"
-else
-echo -e "MYSQL ROOT PASSWORD ALLREADY SETUP......$Y skipping"
-fi
-
-
+VALIDATE $? "setting up the root password"
