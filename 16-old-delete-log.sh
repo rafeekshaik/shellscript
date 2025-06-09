@@ -22,5 +22,5 @@ VALIDATE(){
 }
 echo "script executed at :$TIMESTAMP" &>>$LOG_FILE_NAME
 
-FILES_TO_DELETE=$(find $SOURCE_DIR "*.log" -name -mtime +14)
+FILES_TO_DELETE=$(find $SOURCE_DIR -name "*.log" -mtime +14)
 echo "files to be deleted:: $FILES_TO_DELETE"
