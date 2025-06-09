@@ -1,3 +1,6 @@
+
+#!/bin/bash
+
 while read -r line
 do
 echo "file is :$line"
