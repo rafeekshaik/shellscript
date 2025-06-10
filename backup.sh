@@ -58,6 +58,23 @@ echo "files are::$FILE"
 ZIP_FILE="$DEST_DIR/app-logs-$TIMESTAMP.ZIP"
 find $SOURCE_DIR -name "*.log" -mtime +14 | zip -@ "$ZIP_FILE"
 
+if [ -f "$ZIP_FILE" ]
+then
+echo -e "successfully created the zip file for the files older than $DAYS"
+while read -r filepath
+do
+  echo "files to delete:: $filepath"
+  rm -rf $filepath
+  echo "files to delete:: $filepath"
+done <<< $FILE
+
+
+else
+echo -e "failed to create a zipgile"
+exit 1
+fi
+
+
 exit 1
 else
 echo "NO FILE FOUND OLDER THEN $DAYS"
