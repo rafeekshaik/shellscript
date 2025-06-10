@@ -52,7 +52,7 @@ fi
 FILE=$(find $SOURCE_DIR -name "*.log" -mtime +14)
 echo "files are::$FILE"
 
-if [ -n "$FILE "]
+if [ -n "$FILE" ]
 then
 echo "files are::$FILE"
 exit 1
