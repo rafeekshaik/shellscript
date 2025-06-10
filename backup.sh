@@ -49,3 +49,4 @@ echo -e "$DEST_DIR dose not exist....please check"
 exit 
 fi
 
+FILE=$(find $SOURCE_DIR -name "*.log" -mtimes +14)
