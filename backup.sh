@@ -9,8 +9,8 @@ SOURCE_DIR=$1
 DEST_DIR=$2
 DAYS=${3:-14}
 
-LOG_FOLDER="/home/ec2-user/shellscript-logs"
-LOG_FILE=$(echo $0 | awk -F "/" '{print $NF}' | cut -d "." -f1)
+LOG_FOLDER="/home/ec2-user/shell-log"
+LOG_FILE=$(echo $0 | cut -d "." -f1)
 TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
 LOG_FILE_NAME="$LOG_FOLDER/$LOG_FILE-$TIMESTAMP.log"
 VALIDATE(){
@@ -22,60 +22,15 @@ VALIDATE(){
     echo -e "$2 ....... is  $G success $N"
     fi
 }
-echo "script name:: $0"
-mkdir -p /home/ec2-user/shellscript-logs
-
+echo "script executed at :$TIMESTAMP" &>>$LOG_FILE_NAME
 USAGE (){
-echo -e "$R USAGE:: $N sh backup.sh <SOURCE_DIR> <DEST_DIR> <DAYS(optional)>"
-exit 1
-
+    echo "USAGE:: sh backup.sh <SOURCE_DIR> <DEST_DIR> <DAYS(optional)>"
+    exit 1
 }
 
-
 if [ $# -lt 2 ]
-then
+then 
 USAGE
 fi
 
-if [ ! -d $SOURCE_DIR ]
-then 
-echo -e "$SOURCE_DIR dose not exist ...please check"
-exit 1
-fi
 
-if [ ! -d $DEST_DIR ]
-then
-echo -e "$DEST_DIR dose not exist....please check"
-exit 
-fi
-
-FILE=$(find $SOURCE_DIR -name "*.log" -mtime +14)
-
-
-if [ -n "$FILE" ]
-then
-echo "files are::$FILE"
-ZIP_FILE="$DEST_DIR/app-logs-$TIMESTAMP.ZIP"
-find $SOURCE_DIR -name "*.log" -mtime +14 | zip -@ "$ZIP_FILE"
-
-if [ -f "$ZIP_FILE" ]
-then
-echo -e "successfully created the zip file for the files older than $DAYS"
-while read -r filepath
-do
-  echo "files to delete:: $filepath"
-  rm -rf $filepath
-  echo "files to delete:: $filepath"
-done <<< $FILE
-
-
-else
-echo -e "failed to create a zipgile"
-exit 1
-fi
-
-
-exit 1
-else
-echo "NO FILE FOUND OLDER THEN $DAYS"
-fi
