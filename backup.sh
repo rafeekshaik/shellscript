@@ -50,11 +50,14 @@ exit
 fi
 
 FILE=$(find $SOURCE_DIR -name "*.log" -mtime +14)
-echo "files are::$FILE"
+
 
 if [ -n "$FILE" ]
 then
 echo "files are::$FILE"
+ZIP_FILE="$DEST_DIR/app-logs-$TIMESTAMP.ZIP"
+find $SOURCE_DIR -name "*.log" -mtime +14 | zip -@ "$ZIP_FILE"
+
 exit 1
 else
 echo "NO FILE FOUND OLDER THEN $DAYS"
