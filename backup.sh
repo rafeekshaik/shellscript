@@ -22,6 +22,7 @@ VALIDATE(){
     echo -e "$2 ....... is  $G success $N"
     fi
 }
+mkdir -p /home/ec2-user/shell-log
 echo "script executed at :$TIMESTAMP" &>>$LOG_FILE_NAME
 USAGE (){
     echo "USAGE:: sh backup.sh <SOURCE_DIR> <DEST_DIR> <DAYS(optional)>"
