@@ -22,7 +22,7 @@ VALIDATE(){
     echo -e "$2 ....... is  $G success $N"
     fi
 }
-
+echo "script name:: $0"
 mkdir -p /home/ec2-user/shellscript-logs
 
 USAGE (){
