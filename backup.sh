@@ -45,7 +45,7 @@ fi
 
 if [ ! -d $DEST_DIR ]
 then
-echo -e "$DIST_DIR dose not exist....please check"
+echo -e "$DEST_DIR dose not exist....please check"
 exit 
 fi
 
