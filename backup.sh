@@ -21,6 +21,8 @@ VALIDATE(){
     echo -e "$2 ....... is  $G success $N"
     fi
 }
+
+echo "file name: $0"
 echo "script executed at :$TIMESTAMP" &>>$LOG_FILE_NAME
 USAGE (){
 
