@@ -31,3 +31,15 @@ if [ $# -lt 2 ]
 then 
 USAGE
 fi
+
+if [ ! -d $SOURCE_DIR ]
+then 
+echo "source directory $SOURCE_DIR is not exist"
+exit 1
+fi
+
+if [ ! -d $DEST_DIR ]
+then
+echo "Destination directory $DEST_DIR is not present"
+exit 1
+fi
