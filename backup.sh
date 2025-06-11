@@ -58,7 +58,7 @@ do
    echo "files to be deleted are:$filesname"
    rm -rf $filesname
    echo "deleted files are : $filesname"
-done <<< $FILE
+done <<< $FILES
 
 exit 1
 else
