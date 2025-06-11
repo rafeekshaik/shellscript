@@ -57,7 +57,7 @@ while read -r filesname
 do 
    echo "files to be deleted are:$filesname"
    rm -rf $filesname
-
+   echo "deleted files are : $filesname"
 done <<< $FILE
 
 exit 1
