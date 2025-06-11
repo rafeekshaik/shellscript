@@ -45,7 +45,7 @@ exit 1
 fi
 FILES=$(find $SOURCE_DIR -name "*.log" -mtime +14)
 
-if [ -n $FILES ]
+if [ -n "$FILES" ]
 then
 echo "files are :$FILES"
 ZIP_FILE="$DEST_DIR/app-logs-$TIMESTAMP.zip"
