@@ -44,4 +44,29 @@ echo "Destination directory $DEST_DIR is not present"
 exit 1
 fi
 FILES=$(find $SOURCE_DIR -name "*.log" -mtime +14)
+
+if [ -n $FILES ]
+then
 echo "files are :$FILES"
+ZIP_FILE="$DEST_DIR/app-logs-$TIMESTAMP.zip"
+find $SOURCE_DIR -name "*.log" -mtime +14 | zip -@ "$ZIP_FILE"
+if [ -f "$ZIP_FILE" ]
+then
+echo "zip file is cretaed successfully"
+while read -r filesname
+do 
+   echo "files to be deleted are:$filesname"
+   rm -rf $filesname
+
+done <<< $FILE
+
+exit 1
+else
+echo "creating zip file is failure"
+exit 1
+fi
+else
+echo "no files are there for older then $DAYS"
+fi
+
+
