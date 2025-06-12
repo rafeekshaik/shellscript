@@ -21,7 +21,7 @@ VALIDATE(){
     echo -e "$2 ....... is  $G success $N"
     fi
 }
-
+mkdir -p /home/ec2-user/shellscript-logs
 echo "file name: $0"
 echo "script executed at :$TIMESTAMP" &>>$LOG_FILE_NAME
 USAGE (){
